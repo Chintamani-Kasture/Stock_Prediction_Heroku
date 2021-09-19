@@ -1,0 +1,106 @@
+<html>
+<head>
+	<title>Predicting Model</title>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" >
+        function loading(){
+            $("#loading").show();
+            $("#content").hide();       
+        }
+    </script>
+<meta charset="utf-8" />
+<style>
+table.dataframe, .dataframe th, .dataframe td {
+  border: none;
+  border-bottom: 1px solid #C8C8C8;
+  border-collapse: collapse;
+  text-align:left;
+  padding: 10px;
+  margin-bottom: 40px;
+  font-size: 0.9em;
+  color: #FFFFFF;
+}  
+.heading { color: #FFFFFF;}  
+body {
+
+    padding:0px;
+    margin:20px;
+    background:url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/demo-bg.jpg");
+    background-size:auto;
+    width:100vw;
+    height:100vh;
+    
+   
+}
+
+</style>
+
+</head>
+
+   <body>
+    <div class="container" >
+       <h2 style="color: white; margin:20px auto; font-weight:bold;">
+                            Predicting-Market-Volatility-And-Building-Short-Term-Trading-Strategies-Using-Data-From-Reddit
+                        </h2>
+    
+   
+      <form action="http://localhost:5000" method="POST" action="/submit_ts" enctype="multipart/form-data">
+        <div class="col-sm-9">
+         <div class="form-group  purple-border">
+           
+          <label for="comment"  class="heading">Opening Value</label>
+          <textarea class="form-control" rows="2" id="open" name="open" rows="2" cols="5" autofocus>{{open}}</textarea>
+      </div>
+      <label for="comment"  class="heading">High Value</label>
+          <textarea class="form-control" rows="2" id="high" name="high" rows="2" cols="5" autofocus>{{high}}</textarea>
+
+       <label for="comment"  class="heading">Low Value</label>
+          <textarea class="form-control" rows="2" id="low" name="low" rows="2" cols="5" autofocus>{{low}}</textarea>
+
+         <label for="comment"  class="heading">Closing Value</label>
+          <textarea class="form-control" rows="2" id="close" name="close" rows="2" cols="5" autofocus>{{close}}</textarea>
+
+         <label for="comment"  class="heading">Volume</label>
+          <textarea class="form-control" rows="2" id="vol" name="vol" rows="2" cols="5" autofocus>{{vol}}</textarea>
+
+           <label class="form-label">Date</label>
+           <input type="date" class="form-control" id="date" name='date'>
+
+<!--
+          <label for="comment"  class="heading">Date</label><br>
+          <label for="comment"  class="heading">DD/MM/YYYY format</label>
+          <textarea class="form-control" rows="2" id="date" name="date" rows="2" cols="5" autofocus>{{date}}</textarea>
+-->
+
+          <label for="comment"  class="heading">Comment Length</label>
+          <textarea class="form-control" rows="2" id="comment_length" name="comment_length" rows="2" cols="5" autofocus>{{comment_length}}</textarea>
+          
+          <label for="comment"  class="heading">Polarity Score</label>
+          <textarea class="form-control" rows="2" id="polarity_score" name="polarity_score" rows="2" cols="5" autofocus>{{polarity_score}}</textarea>
+          <div>
+            <label for="comment" class="heading">Will stock price increase or decrease </label>
+            <select class="form-control" id="tag" name="tag">
+                <option value="pos" selected>Positive</option>
+                <option value="neg">Negative</option>
+                <option value="neu">Neutral</option>
+            </select>
+            </div>
+            
+        </div>
+        <br>
+        <div class="col-sm-3">
+      <button type="submit" class="btn btn-primary" name="submit">SUBMIT</button>
+      </div>
+      <br>
+    
+      <div class="col-sm-9">
+      <textarea class="form-control" rows="2" id="comment" name="comment" rows="2" cols="5" autofocus>{{comment}}</textarea>
+    </div>
+    </div>
+    <br><br><br><br>
+</body>
+
+</html>
