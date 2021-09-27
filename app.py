@@ -52,7 +52,7 @@ def predict():
         query_cont_sent=request.form['tag']
 
 
-        query_date=datetime.strptime(query_date, "%Y-%m-%d").date()
+        query_date=datetime.strptime(query_date, "%d-%m-%Y").date()
         date_year=query_date.strftime("%Y")
         date_month=query_date.strftime("%m")
         date_day=query_date.strftime("%d")
