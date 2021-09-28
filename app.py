@@ -1,6 +1,3 @@
-
-
-
 from flask import Flask, request,render_template
 import pickle
 from datetime import datetime
@@ -11,7 +8,6 @@ app=Flask(__name__)
 
 #loading the model
 model=pickle.load(open('model_pickle','rb'))
-
 
 
 
@@ -32,13 +28,12 @@ def predict():
         4.close
         5.volume
         6.cont_len
-        7.cont_pol
-        8.date_year
-        9.date_month
-        10.date_day
-        11.sent_negative
-        12.sent_neutral
-        13.sent_positive
+        7.date_year
+        8.date_month
+        9.date_day
+        10.sent_negative
+        11.sent_neutral
+        12.sent_positive
         '''
         # syntax-->     var_name=request.form['<name which in present in html form(index.html)>']
         query_open=request.form['open']
@@ -48,22 +43,22 @@ def predict():
         query_volume=request.form['vol']
         query_date= request.form['date']
         query_cont_len=request.form['comment_length']
-        query_cont_pol=request.form['polarity_score']
+        # query_cont_pol=request.form['cont_pol']
         query_cont_sent=request.form['tag']
 
 
-        query_date=datetime.strptime(query_date, "%d-%m-%Y").date()
+        query_date=datetime.strptime(query_date, "%Y-%m-%d").date()
         date_year=query_date.strftime("%Y")
         date_month=query_date.strftime("%m")
         date_day=query_date.strftime("%d")
 
         #For neutral
-        if query_cont_sent=="neutral":
+        if query_cont_sent=="neu":
             sent_neutral=1
             sent_positive=0
             sent_negative=0
         # For positive
-        elif query_cont_sent=="positive":
+        elif query_cont_sent=="pos":
             sent_neutral=0
             sent_positive=1
             sent_negative=0
@@ -81,7 +76,6 @@ def predict():
                         query_close,
                         query_volume,
                         query_cont_len,
-                        query_cont_pol,
                         date_year,
                         date_month,
                         date_day,
@@ -107,5 +101,3 @@ def predict():
 
 if __name__=="__main__":
     app.run(debug=True)
-
-
